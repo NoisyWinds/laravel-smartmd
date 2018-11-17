@@ -1,6 +1,6 @@
 <?php
 
-namespace NoisyWind\Smartmd\Facades;
+namespace NoisyWinds\Smartmd\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

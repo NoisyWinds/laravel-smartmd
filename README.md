@@ -6,8 +6,13 @@ this program is a plugin for laravel 5.4 upper
 #  Screenshots
 editor demo: [xiaoqingxin.site](https://xiaoqingxin.site/editor/write) and you can see the render page [xiaoqingxin.site](https://xiaoqingxin.site/editor/show)
   
-  ![](./docs/screenshort_01.png) ![](./docs/screenshort_02.png)  
-  ![](./docs/screenshort_03.gif) ![](./docs/screenshort_04.gif)
+  ![](./docs/screenshort_01.png)
+  ---
+  ![](./docs/screenshort_02.png) 
+  --- 
+  ![](./docs/screenshort_03.gif) 
+  ---
+  ![](./docs/screenshort_04.gif)
 
 Reference:
 - CodeMirror [link](https://github.com/codemirror/CodeMirror) 

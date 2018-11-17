@@ -1,6 +1,6 @@
 <?php
 
-namespace NoisyWind\Smartmd;
+namespace NoisyWinds\Smartmd;
 
 use Illuminate\Support\ServiceProvider;
 
