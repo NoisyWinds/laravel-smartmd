@@ -1,45 +1,46 @@
 # Laravel-smartmd
-a simple markdown editor compatible most markdown parse,like Mathematical formula、flowchart、upload image...
+一个简单的 markdown 编辑器兼容大部分主流的 markdown 语法解析,比如数学公式、流程图、上传图片等...
 
-this program is a plugin for laravel 5.4 upper
+这是一个 laravel 插件的项目，要求 laravel 版本大于等于 5.4
 
-[中文文档](./docs/docs_CN.md)  
-[API documentation](./docs/api_EN.md)  
+[English](../README.md)  
+[API 文档](./api_EN.md)  
   
-more update now...
+更多功能和文档随缘更新...
 
-#  Screenshots
-editor demo: [xiaoqingxin.site](https://xiaoqingxin.site/editor/write) and you can see the render page [xiaoqingxin.site](https://xiaoqingxin.site/editor/show)
+#  效果截图
+编辑器示例地址：[xiaoqingxin.site](https://xiaoqingxin.site/editor/write)   
+编辑器页面渲染地址： [xiaoqingxin.site](https://xiaoqingxin.site/editor/show)
   
-  ![](./docs/screenshort_01.png)
+  ![](screenshort_01.png)
   ---
-  ![](./docs/screenshort_02.png) 
+  ![](screenshort_02.png) 
   --- 
-  ![](./docs/screenshort_03.gif) 
+  ![](screenshort_03.gif) 
   ---
-  ![](./docs/screenshort_04.gif)
-
-Reference:
+  ![](screenshort_04.gif)
+  
+参考和引用:
 - CodeMirror [link](https://github.com/codemirror/CodeMirror) 
 - Simplemde-markdown [link](https://github.com/sparksuite/simplemde-markdown-editor)
 - markdown-it (markdown render) [link](https://github.com/markdown-it/markdown-it)
 - mermaid (flowchart) [link](https://github.com/knsv/mermaid)
 - intervention (image handling) [link](https://github.com/Intervention/image)
 
-### requirements
+### 依赖于
 - PHP >= 7.0.0
 - Laravel >= 5.4.0
 
-## Installation
-First, install package.
+## 如何初始化
+首先，安装 composer 的 noisywinds/laravel-smartmd 包：
 ```
 composer require noisywinds/laravel-smartmd
 ```
-Then run these commands to publish assets and config：
+将素材和配置文件迁移到项目：
 ```
 php artisan vendor:publish --provider="NoisyWinds\Smartmd\SmartmdServiceProvider"
 ```
-make test view router:
+在 web.php 写入测试路径（后期可自行并入项目）:
 ```
 Route::group(['namespace' => 'Smartmd', 'prefix' => 'editor'], function () {
 
@@ -57,7 +58,7 @@ Route::group(['namespace' => 'Smartmd', 'prefix' => 'editor'], function () {
     });
 });
 ```
-Rewrite UploadController or config/smartmd.php to change upload path:
+重写 UploadController 或者 config/smartmd.php 来改变你的文件上传位置:
 ```php
 <?php
 return [
@@ -73,10 +74,9 @@ return [
     ],
 ];
 ```
-* notice: uploda image will optimize and resize in the UploadController
+* 注意: 上传的图片会经过优化和压缩，这些处理你可以在 UploadController 中修改（比如加水印的操作）。
 
-# 
-# Some shortcode
+# 一些快捷方式（可自定义）
 1. Bold (Ctrl + b)
 2. Italic (Ctrl + I)
 3. Insert Image (Ctrl + Alt + I)
@@ -85,7 +85,7 @@ return [
 6. more... (mac command the same with ctrl)
 
 
-# some editor options
+# 一些编辑器的基础配置
 ```javascript
 var editor = new Smartmd({
         element: document.getElementById("editor"),
@@ -138,11 +138,12 @@ var cm = smartmd.codemirror;
        ev.preventDefault();
    }
 ```
-# How to expand
-### editor
-- CodeMirror [link](https://github.com/codemirror/CodeMirror) 
-### markdown render
-- markdown-it (markdown render) [link](https://github.com/markdown-it/markdown-it)
-# issue 
-Welcome to ask questions or what features you want to be compatible with.
+# 如何拓展核心功能
+### 编辑器（语法解析、插入小组件等）
+- 参考 CodeMirror 的开发手册 [link](https://github.com/codemirror/CodeMirror) 
+### markdown 文本渲染
+- 参考 markdown-it 的插件开发 (markdown render) [link](https://github.com/markdown-it/markdown-it)
+- 如需更改解析，可以修改 smartmd 前端项目的 mode
+# 问题反馈 
+欢迎你在 issue 反馈你遇到的问题和你想兼容或者想拓展的需求，希望能给到你一些帮助。
 
