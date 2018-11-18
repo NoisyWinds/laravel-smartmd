@@ -4,12 +4,13 @@ a simple markdown editor compatible most markdown parse,like Mathematical formul
 this program is a plugin for laravel 5.4 upper
 
 [中文文档](./docs/docs_CN.md)  
-[API documentation](./docs/api_EN.md)  
+[full documentation](./docs/api_EN.md)  
   
 more update now...
 
-#  Screenshots
-editor demo: [xiaoqingxin.site](https://xiaoqingxin.site/editor/write) and you can see the render page [xiaoqingxin.site](https://xiaoqingxin.site/editor/show)
+###  Screenshots
+editor demo: [Demo](https://xiaoqingxin.site/editor/write)   
+render page [Demo](https://xiaoqingxin.site/editor/show)
   
   ![](./docs/screenshort_01.png)
   ---
@@ -26,11 +27,11 @@ Reference:
 - mermaid (flowchart) [link](https://github.com/knsv/mermaid)
 - intervention (image handling) [link](https://github.com/Intervention/image)
 
-### requirements
+#### requirements
 - PHP >= 7.0.0
 - Laravel >= 5.4.0
 
-## Installation
+### Installation
 First, install package.
 ```
 composer require noisywinds/laravel-smartmd
@@ -75,8 +76,7 @@ return [
 ```
 * notice: uploda image will optimize and resize in the UploadController
 
-# 
-# Some shortcode
+## Some shortcode
 1. Bold (Ctrl + b)
 2. Italic (Ctrl + I)
 3. Insert Image (Ctrl + Alt + I)
@@ -85,7 +85,7 @@ return [
 6. more... (mac command the same with ctrl)
 
 
-# some editor options
+## some editor options
 ```javascript
 var editor = new Smartmd({
         element: document.getElementById("editor"),
@@ -138,11 +138,11 @@ var cm = smartmd.codemirror;
        ev.preventDefault();
    }
 ```
-# How to expand
-### editor
+## How to expand
+#### editor
 - CodeMirror [link](https://github.com/codemirror/CodeMirror) 
-### markdown render
+#### markdown render
 - markdown-it (markdown render) [link](https://github.com/markdown-it/markdown-it)
-# issue 
+## issue 
 Welcome to ask questions or what features you want to be compatible with.
 

@@ -4,13 +4,13 @@
 这是一个 laravel 插件的项目，要求 laravel 版本大于等于 5.4
 
 [English](../README.md)  
-[API 文档](./api_EN.md)  
+[详细文档](./api_EN.md)  
   
 更多功能和文档随缘更新...
 
-#  效果截图
-编辑器示例地址：[xiaoqingxin.site](https://xiaoqingxin.site/editor/write)   
-编辑器页面渲染地址： [xiaoqingxin.site](https://xiaoqingxin.site/editor/show)
+##  效果截图
+编辑器示例地址：[Demo](https://xiaoqingxin.site/editor/write)   
+编辑器页面渲染地址： [Demo](https://xiaoqingxin.site/editor/show)
   
   ![](screenshort_01.png)
   ---
@@ -27,7 +27,7 @@
 - mermaid (flowchart) [link](https://github.com/knsv/mermaid)
 - intervention (image handling) [link](https://github.com/Intervention/image)
 
-### 依赖于
+## 依赖于
 - PHP >= 7.0.0
 - Laravel >= 5.4.0
 
@@ -76,7 +76,7 @@ return [
 ```
 * 注意: 上传的图片会经过优化和压缩，这些处理你可以在 UploadController 中修改（比如加水印的操作）。
 
-# 一些快捷方式（可自定义）
+## 一些快捷键
 1. Bold (Ctrl + b)
 2. Italic (Ctrl + I)
 3. Insert Image (Ctrl + Alt + I)
@@ -85,7 +85,7 @@ return [
 6. more... (mac command the same with ctrl)
 
 
-# 一些编辑器的基础配置
+## 一些编辑器的基础配置
 ```javascript
 var editor = new Smartmd({
         element: document.getElementById("editor"),
@@ -138,12 +138,13 @@ var cm = smartmd.codemirror;
        ev.preventDefault();
    }
 ```
-# 如何拓展核心功能
-### 编辑器（语法解析、插入小组件等）
-- 参考 CodeMirror 的开发手册 [link](https://github.com/codemirror/CodeMirror) 
-### markdown 文本渲染
-- 参考 markdown-it 的插件开发 (markdown render) [link](https://github.com/markdown-it/markdown-it)
-- 如需更改解析，可以修改 smartmd 前端项目的 mode
-# 问题反馈 
+## 如何拓展核心功能
+#### 1. 编辑器
+参考 CodeMirror 的 [开发手册](https://github.com/codemirror/CodeMirror) 
+#### 2. markdown 文本渲染  
+参考 markdown-it 的插件开发 [链接](https://github.com/markdown-it/markdown-it)  
+如需更改解析规则，可以修改 smartmd 前端项目的 mode
+
+## 问题反馈 
 欢迎你在 issue 反馈你遇到的问题和你想兼容或者想拓展的需求，希望能给到你一些帮助。
 
