@@ -8,6 +8,6 @@ class  Smartmd extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return \NoisyWind\Smartmd\Smartmd::class;
+        return \NoisyWinds\Smartmd\Smartmd::class;
     }
 }

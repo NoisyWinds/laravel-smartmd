@@ -1,5 +1,6 @@
-# Smartmd API 
+# Smartmd useful API 
 ![](https://xiaoqingxin.site/images/default_img.jpg)
+
 ## Useful methods
 ```javascript
 var editor = new Smartmd();
@@ -141,19 +142,42 @@ return response()->json(
 ```
 
 ### parse markdown 
-I don't need editor only want javascript render the markdown (js size smaller than after):
+#### I don't need editor:
 ```html
-// require in your meta
-@include('Smartmd::parse')
+// require in your view meta
+@include('Smartmd::js-parse')
 ```
-I need editor:
+```
+<script>
+    // create Parsemd object use javascript parse markdown
+    var parse = new Parsemd();
+    var html = parse.render(document.getElementById("editor").value.replace(/^\s+|\s+$/g, ''));
+    document.getElementById("content").innerHTML = html;
+</script>
+```
+#### I need editor:
 ```html
-var smartmd = new Smartmd();
-smartmd.markdown("# hello world");
+<script>
+    var smartmd = new Smartmd();
+    smartmd.markdown("# hello world");
+</script>
 ```
-I want php render:
+#### I want php render:
+* only render Formula、Flowchart、Code highlight use JavaScript
 ```html
-... develop now
+// require in your view meta
+@include('Smartmd::php-parse')
 ```
+ParseController.php
+```
+use NoisyWinds\Smartmd\Markdown;
+
+$parse = new Markdown();
+$text = "# Your markdown text";
+$html = $parse->text($text);
+return view('Smartmd::php-show',['content'=>$html]);
+
+```
+
 
  

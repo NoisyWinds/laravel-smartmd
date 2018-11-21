@@ -1,24 +1,34 @@
 # Laravel-smartmd
+=====
+![](https://xiaoqingxin.site/images/default_img.jpg)
+
+<p align="center">
+ <a href="./docs/api_EN.md">Documentation</a> | <a href="./docs/api_EN.md">中文文档</a>
+</p>
+
+<p align="center">
+<a href="https://travis-ci.org/NoisyWinds/laravel-smartmd"><img src="https://travis-ci.org/NoisyWinds/laravel-smartmd.svg?branch=master"></a>
+<a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Software License"></img></a>
+<a href="https://laravel.com"><img src="https://img.shields.io/badge/laravel-5.4-green.svg" alt="Software License"></img></a>
+<a href="https://packagist.org/packages/noisywinds/laravel-smartmd"><img src="https://img.shields.io/packagist/v/NoisyWinds/laravel-smartmd.svg" alt="packagist"></img></a>
+</p>
+
 a simple markdown editor compatible most markdown parse,like Mathematical formula、flowchart、upload image...
 
-this program is a plugin for laravel 5.4 upper
+this program is a plugin for laravel 5.4 upper 
 
-[中文文档](./docs/docs_CN.md)  
-[full documentation](./docs/api_EN.md)  
-  
-more update now...
+more feature develop now...
 
 ###  Screenshots
 editor demo: [Demo](https://xiaoqingxin.site/editor/write)   
-render page [Demo](https://xiaoqingxin.site/editor/show)
+js render page [Demo](https://xiaoqingxin.site/editor/js-show)  
+php render page [Demo](https://xiaoqingxin.site/editor/php-show)
   
-  ![](./docs/screenshort_01.png)
-  ---
-  ![](./docs/screenshort_02.png) 
+  ![](./docs/screenshot.png)
   --- 
-  ![](./docs/screenshort_03.gif) 
+  ![](./docs/screenshot_02.gif) 
   ---
-  ![](./docs/screenshort_04.gif)
+  ![](./docs/screenshot_03.gif)
 
 Reference:
 - CodeMirror [link](https://github.com/codemirror/CodeMirror) 
@@ -43,18 +53,13 @@ php artisan vendor:publish --provider="NoisyWinds\Smartmd\SmartmdServiceProvider
 make test view router:
 ```
 Route::group(['namespace' => 'Smartmd', 'prefix' => 'editor'], function () {
-
-    // uploda controller
     Route::post('/upload', 'UploadController@imSave');
-    
-    // write view
     Route::get('/write', function () {
         return view('vendor/smartmd/write');
     });
-    
-    // show view
-    Route::get('/show',function(){
-        return view('vendor/smartmd/show');
+    Route::get('/php-show','ParseController@index');
+    Route::get('/js-show',function(){
+        return view('vendor/smartmd/js-show');
     });
 });
 ```
@@ -138,6 +143,45 @@ var cm = smartmd.codemirror;
        ev.preventDefault();
    }
 ```
+
+## parse markdown 
+#### I don't need editor:
+```html
+// require in your view meta
+@include('Smartmd::js-parse')
+```
+```
+<script>
+    // create Parsemd object use javascript parse markdown
+    var parse = new Parsemd();
+    var html = parse.render(document.getElementById("editor").value.replace(/^\s+|\s+$/g, ''));
+    document.getElementById("content").innerHTML = html;
+</script>
+```
+#### I need editor:
+```html
+<script>
+    var smartmd = new Smartmd();
+    smartmd.markdown("# hello world");
+</script>
+```
+#### I want php render:
+* only render Formula、Flowchart、Code highlight use JavaScript
+```html
+// require in your view meta
+@include('Smartmd::php-parse')
+```
+ParseController.php
+```
+use NoisyWinds\Smartmd\Markdown;
+
+$parse = new Markdown();
+$text = "# Your markdown text";
+$html = $parse->text($text);
+return view('Smartmd::php-show',['content'=>$html]);
+
+```
+
 ## How to expand
 #### editor
 - CodeMirror [link](https://github.com/codemirror/CodeMirror) 
