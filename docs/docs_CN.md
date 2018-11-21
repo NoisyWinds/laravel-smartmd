@@ -7,10 +7,15 @@
 </p>
 
 <p align="center">
+<a href="https://travis-ci.org/NoisyWinds/laravel-smartmd"><img src="https://travis-ci.org/NoisyWinds/laravel-smartmd.svg?branch=master"></a>
 <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Software License"></img></a>
+<a href="https://laravel.com"><img src="https://img.shields.io/badge/laravel-5.4-green.svg" alt="Software License"></img></a>
+<a href="https://packagist.org/packages/noisywinds/laravel-smartmd"><img src="https://img.shields.io/packagist/v/NoisyWinds/laravel-smartmd.svg" alt="packagist"></img></a>
 </p>
-一个实用的 markdown 编辑器兼容大部分主流的 markdown 语法解析,包括数学公式、流程图、emoji 表情、上传图片等...这是一个 laravel 插件的项目，要求 laravel 版本大于等于 5.4,更多功能和文档随缘更新...
 
+一个实用的 markdown 编辑器兼容大部分主流的 markdown 语法解析,您可以选择前后端的任意一种解析方式,包括数学公式、流程图、emoji 表情、上传图片等...这是一个 laravel 插件的项目，要求 laravel 版本大于等于 5.4, php 版本大于等于 7.1 ,更多功能和文档随缘更新...
+  
+  
 ##  效果截图
 编辑器示例页面：[Demo](https://xiaoqingxin.site/editor/write)   
 js 渲染示例页面： [Demo](https://xiaoqingxin.site/editor/js-show)  

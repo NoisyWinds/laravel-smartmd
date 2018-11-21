@@ -13,8 +13,8 @@
 <a href="https://packagist.org/packages/noisywinds/laravel-smartmd"><img src="https://img.shields.io/packagist/v/NoisyWinds/laravel-smartmd.svg" alt="packagist"></img></a>
 </p>
 
-a simple markdown editor compatible most markdown parse,like Mathematical formula、flowchart、upload image...
-this program is a plugin for laravel 5.4 upper.more feature develop now...
+A simple markdown editor compatible most markdown parse,You can choose any parse methods on server or client,like Mathematical formula、flowchart、upload image...
+this program is a plugin for laravel 5.4 and php 7.1 upper.more feature develop now...    
 
 ##  Screenshots
 editor demo: [Demo](https://xiaoqingxin.site/editor/write)   
@@ -35,7 +35,7 @@ Reference:
 - intervention (image handling) [link](https://github.com/Intervention/image)
 
 ## requirements
-- PHP >= 7.0.0
+- PHP >= 7.1.0
 - Laravel >= 5.4.0
 
 ## Installation
