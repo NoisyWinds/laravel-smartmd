@@ -1,9 +1,9 @@
 # Laravel-smartmd
-=====
+
 ![](https://xiaoqingxin.site/images/default_img.jpg)
 
 <p align="center">
- <a href="./docs/api_EN.md">Documentation</a> | <a href="./docs/api_EN.md">中文文档</a>
+ <a href="./docs/api_EN.md">Documentation</a> | <a href="./docs/docs_CN.md">中文文档</a>
 </p>
 
 <p align="center">
@@ -14,12 +14,9 @@
 </p>
 
 a simple markdown editor compatible most markdown parse,like Mathematical formula、flowchart、upload image...
+this program is a plugin for laravel 5.4 upper.more feature develop now...
 
-this program is a plugin for laravel 5.4 upper 
-
-more feature develop now...
-
-###  Screenshots
+##  Screenshots
 editor demo: [Demo](https://xiaoqingxin.site/editor/write)   
 js render page [Demo](https://xiaoqingxin.site/editor/js-show)  
 php render page [Demo](https://xiaoqingxin.site/editor/php-show)
@@ -37,11 +34,11 @@ Reference:
 - mermaid (flowchart) [link](https://github.com/knsv/mermaid)
 - intervention (image handling) [link](https://github.com/Intervention/image)
 
-#### requirements
+## requirements
 - PHP >= 7.0.0
 - Laravel >= 5.4.0
 
-### Installation
+## Installation
 First, install package.
 ```
 composer require noisywinds/laravel-smartmd

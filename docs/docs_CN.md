@@ -1,21 +1,15 @@
 # Laravel-smartmd
-=====
+
 ![](https://xiaoqingxin.site/images/default_img.jpg)
 
 <p align="center">
- <a href="./docs/api_EN.md">Documentation</a> | <a href="./docs/api_EN.md">中文文档</a>
+ <a href="./api_EN.md">Documentation</a> | <a href="./docs_CN.md">中文文档</a>
 </p>
 
 <p align="center">
 <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Software License"></img></a>
 </p>
-
-一个简单的 markdown 编辑器兼容大部分主流的 markdown 语法解析,比如数学公式、流程图、上传图片等...
-
-这是一个 laravel 插件的项目，要求 laravel 版本大于等于 5.4
-
-  
-更多功能和文档随缘更新...
+一个实用的 markdown 编辑器兼容大部分主流的 markdown 语法解析,包括数学公式、流程图、emoji 表情、上传图片等...这是一个 laravel 插件的项目，要求 laravel 版本大于等于 5.4,更多功能和文档随缘更新...
 
 ##  效果截图
 编辑器示例页面：[Demo](https://xiaoqingxin.site/editor/write)   
@@ -37,7 +31,7 @@ php 渲染示例页面： [Demo](https://xiaoqingxin.site/editor/php-show)
 - intervention (image handling) [link](https://github.com/Intervention/image)
 
 ## 依赖于
-- PHP >= 7.0.0
+- PHP >= 7.1.0
 - Laravel >= 5.4.0
 
 ## 如何初始化
