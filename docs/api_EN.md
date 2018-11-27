@@ -38,90 +38,90 @@ editor.makeUploadWidget = function(){
 ```javascript
 // Most options demonstrate the non-default behavior
 var smartmd = new Smartmd({
-	autofocus: true,
-	// editor height defalut 30vh
-	minHeight: "80vh",
-	autosave: {
-		enabled: true,
-		uniqueId: "MyUniqueID",
-		delay: 1000,
-	},
-	blockStyles: {
-		bold: "__",
-		italic: "_"
-	},
-	element: document.getElementById("MyID"),
-	forceSync: true,
-	hideIcons: ["guide", "heading"],
-	indentWithTabs: false,
-	initialValue: "Hello world!",
-	insertTexts: {
-		horizontalRule: ["", "\n\n-----\n\n"],
-		// need set image false
-		image: ["![](http://", ")"],
-		link: ["[", "](http://)"],
-		table: ["", "\n\n| Column 1 | Column 2 | Column 3 |\n| -------- | -------- | -------- |\n| Text     | Text      | Text     |\n\n"],
-	},
-	lineWrapping: false,
-	parsingConfig: {
-		allowAtxHeaderWithoutSpace: true,
-		strikethrough: false,
-		underscoresBreakWords: true,
-	},
-	placeholder: "Type here...",
-	promptURLs: true,
-	renderingConfig: {
-		singleLineBreaks: false,
-		codeSyntaxHighlighting: true,
-	},
-	
-	// rewrite your shortcuts
-	shortcuts: {
-		drawTable: "Cmd-Alt-T"
-	},
-	
-	showIcons: ["code", "table"],
-	
-	// rewrite status
-	status: ["autosave", "lines", "words", "cursor", {
-		className: "keystrokes",
-		defaultValue: function(el) {
-			this.keystrokes = 0;
-			el.innerHTML = "0 Keystrokes";
-		},
-		onUpdate: function(el) {
-			el.innerHTML = ++this.keystrokes + " Keystrokes";
-		}
-	}], // Another optional usage, with a custom status bar item that counts keystrokes
-	
-	styleSelectedText: false,
-	tabSize: 4,
-	toolbar: false,
-	toolbarTips: false,
-	
-	image:{
-       // your UploadController route
-       ploadPath:'./upload',
-       // image suffix
-       type:['jpeg','png','bmp','gif','jpg'],
-       // max fileSize (kb)
+    autofocus: true,
+    // editor height defalut 30vh
+    minHeight: "80vh",
+    autosave: {
+        enabled: true,
+        uniqueId: "MyUniqueID",
+        delay: 1000,
+    },
+    blockStyles: {
+        bold: "__",
+        italic: "_"
+    },
+    element: document.getElementById("MyID"),
+    forceSync: true,
+    hideIcons: ["guide", "heading"],
+    indentWithTabs: false,
+    initialValue: "Hello world!",
+    insertTexts: {
+        horizontalRule: ["", "\n\n-----\n\n"],
+        // need set image false
+        image: ["![](http://", ")"],
+        link: ["[", "](http://)"],
+        table: ["", "\n\n| Column 1 | Column 2 | Column 3 |\n| -------- | -------- | -------- |\n| Text     | Text      | Text     |\n\n"],
+    },
+    lineWrapping: false,
+    parsingConfig: {
+        allowAtxHeaderWithoutSpace: true,
+        strikethrough: false,
+        underscoresBreakWords: true,
+    },
+    placeholder: "Type here...",
+    promptURLs: true,
+    renderingConfig: {
+        singleLineBreaks: false,
+        codeSyntaxHighlighting: true,
+    },
+    
+    // rewrite your shortcuts
+    shortcuts: {
+        drawTable: "Cmd-Alt-T"
+    },
+    
+    showIcons: ["code", "table"],
+    
+    // rewrite status
+    status: ["autosave", "lines", "words", "cursor", {
+        className: "keystrokes",
+        defaultValue: function(el) {
+            this.keystrokes = 0;
+            el.innerHTML = "0 Keystrokes";
+        },
+        onUpdate: function(el) {
+            el.innerHTML = ++this.keystrokes + " Keystrokes";
+        }
+    }], // Another optional usage, with a custom status bar item that counts keystrokes
+    
+    styleSelectedText: false,
+    tabSize: 4,
+    toolbar: false,
+    toolbarTips: false,
+    
+    image: {
+        // your UploadController route
+        uploadPath:'./upload',
+        // image suffix
+        type:['jpeg','png','bmp','gif','jpg'],
+        // max fileSize (kb)
         maxSize:4096,
     },
-	// editor friendly alert themes
-	alertThemes:[
-	    {
-        	name: 'success',
-        	icon: 'fa fa-check-circle',
-        	color: '#38c172',
-        	defaultText: 'success'
+    // editor friendly alert themes
+    alertThemes:[
+        {
+            name: 'success',
+            icon: 'fa fa-check-circle',
+            color: '#38c172',
+            defaultText: 'success'
         },
         {
-        	name: 'error',
-        	icon: 'fa fa-close-circle',
-        	color: '#e3342f',
-        	defaultText: 'Some things error'
+            name: 'error',
+            icon: 'fa fa-close-circle',
+            color: '#e3342f',
+            defaultText: 'Some things error'
         }
-	]
+    ]
 });
 ```
 
@@ -151,7 +151,7 @@ return response()->json(
 <script>
     // create Parsemd object use javascript parse markdown
     var parse = new Parsemd();
-    var html = parse.render(document.getElementById("editor").value.replace(/^\s+|\s+$/g, ''));
+    var html = parse.render(document.getElementById("editor"));
     document.getElementById("content").innerHTML = html;
 </script>
 ```
@@ -163,7 +163,7 @@ return response()->json(
 </script>
 ```
 #### I want php render:
-* only render Formula、Flowchart、Code highlight use JavaScript
+_only render Formula、Flowchart、Code highlight use JavaScript_
 ```html
 // require in your view meta
 @include('Smartmd::php-parse')
@@ -177,6 +177,13 @@ $text = "# Your markdown text";
 $html = $parse->text($text);
 return view('Smartmd::php-show',['content'=>$html]);
 
+```
+
+php-show.blade.php 
+```php
+<div class="markdown-body">
+{!! $content !!}
+</div>
 ```
 
 
