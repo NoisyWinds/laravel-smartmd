@@ -3,7 +3,7 @@
 ![](https://xiaoqingxin.site/images/default_img.jpg)
 
 <p align="center">
- <a href="./docs/docs_EN.md">Documentation</a> | <a href="./docs/docs_CN.md">中文文档</a>
+ <a href="./docs_EN.md">Documentation</a> | <a href="./docs_CN.md">中文文档</a>
 </p>
 
 <p align="center">
@@ -14,19 +14,20 @@
 </p>
 
 A simple markdown editor compatible most markdown parse,You can choose any parse methods on server or client,like Mathematical formula、flowchart、upload image...
-this program is a plugin for laravel 5.4 and php 7.1 upper.more feature develop now...    
+this program is a plugin for laravel 5.4 and php 7.1 upper.more feature develop now...  
 
-##  Screenshots
-editor demo: [Demo](https://xiaoqingxin.site/editor/write)   
-js render page [Demo](https://xiaoqingxin.site/editor/js-show)  
-php render page [Demo](https://xiaoqingxin.site/editor/php-show)
   
-  ![](./docs/screenshot.png)
+## screenshot
+editor demo page：[Demo](https://xiaoqingxin.site/editor/write)   
+js parser page： [Demo](https://xiaoqingxin.site/editor/js-show)  
+php parser page： [Demo](https://xiaoqingxin.site/editor/php-show)
+  
+  ![](./screenshot.png)
   --- 
-  ![](./docs/screenshot_02.gif) 
+  ![](./screenshot_02.gif) 
   ---
-  ![](./docs/screenshot_03.gif)
-
+  ![](./screenshot_03.gif)
+  
 Reference:
 - CodeMirror [link](https://github.com/codemirror/CodeMirror) 
 - Simplemde-markdown [link](https://github.com/sparksuite/simplemde-markdown-editor)
@@ -34,20 +35,20 @@ Reference:
 - mermaid (flowchart) [link](https://github.com/knsv/mermaid)
 - intervention (image handling) [link](https://github.com/Intervention/image)
 
-## requirements
+## environment
 - PHP >= 7.1.0
 - Laravel >= 5.4.0
 
-## Installation
-First, install package.
+## How to use
+Install：
 ```
 composer require noisywinds/laravel-smartmd
 ```
-Then run these commands to publish assets and config：
+Initialization:
 ```
 php artisan vendor:publish --provider="NoisyWinds\Smartmd\SmartmdServiceProvider"
 ```
-make test view router:
+Write route in web.php :
 ```
 Route::group(['namespace' => 'Smartmd', 'prefix' => 'editor'], function () {
     Route::post('/upload', 'UploadController@imSave');
@@ -60,7 +61,7 @@ Route::group(['namespace' => 'Smartmd', 'prefix' => 'editor'], function () {
     });
 });
 ```
-Rewrite UploadController or config/smartmd.php to change upload path:
+rewrite UploadController or config/smartmd.php change your image upload place:
 ```php
 <?php
 return [
@@ -76,9 +77,8 @@ return [
     ],
 ];
 ```
-* notice: uploda image will optimize and resize in the UploadController
 
-## Some shortcode
+## shortcut keys
 1. Bold (Ctrl + b)
 2. Italic (Ctrl + I)
 3. Insert Image (Ctrl + Alt + I)
@@ -87,32 +87,30 @@ return [
 6. more... (mac command the same with ctrl)
 
 
-## editor options
+## client initialization
 ```javascript
-new Smartmd({
-   // editor element {string} 
-   el: "#editor",
-   
-   // editor wrapper layout {string or number}
-   height: "400px",
-   width: "100%",
-   
-   // autosave 
-   autoSave: {
-     // uuid is required {string or number}
-     uuid: 1,
-     // {number}
-     delay: 5000
-   },
-   
-   // init state {boolean}
-   isFullScreen: true, // default false
-   isPreviewActive: true // default false
-});
+  new Smartmd({
+    el: "#editor",
+    height: "80vh",
+    autoSave: {
+      uuid: 1,
+      delay: 5000
+    },
+    isFullScreen: true,
+    isPreviewActive: true,
+    uploads: {
+      url: './upload',
+      type: ['jpeg', 'png', 'bmp', 'gif', 'jpg'],
+      maxSize: 4096,
+      typeError: 'Image support format {type}.',
+      sizeError: 'Image size is more than {maxSize} kb.',
+      serverError: 'Upload failed in {msg}'
+    }
+  });
 ```
 
 ## parse markdown 
-#### I don't need editor:
+#### parse by javascript (without sever):
 ```html
 // require in your view meta
 @include('Smartmd::js-parse')
@@ -125,15 +123,16 @@ new Smartmd({
     document.getElementById("content").innerHTML = html;
 </script>
 ```
-#### I need editor:
+#### need editor and parse by javascript:
 ```html
 <script>
-    var smartmd = new Smartmd();
+    var smartmd = new Smartmd({
+        el: "#editor"
+    });
     smartmd.markdown("# hello world");
 </script>
 ```
-#### I want php render:
-* only render Formula、Flowchart、Code highlight use JavaScript
+#### php parse:
 ```html
 // require in your view meta
 @include('Smartmd::php-parse')
@@ -149,11 +148,9 @@ return view('Smartmd::php-show',['content'=>$html]);
 
 ```
 
-## How to expand
-#### editor
-- CodeMirror [link](https://github.com/codemirror/CodeMirror) 
-#### markdown render
-- markdown-it (markdown render) [link](https://github.com/markdown-it/markdown-it)
-## issue 
-Welcome to ask questions or what features you want to be compatible with.
+## How to extand
+#### 1. editor
+ Smartmd.js  [noisywinds/smartmd](https://github.com/noisywinds/smartmd) 
+#### 2. markdown text parse
+use markdown-it plugin [link](https://github.com/markdown-it/markdown-it)
 

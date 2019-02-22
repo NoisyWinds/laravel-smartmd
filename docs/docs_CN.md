@@ -3,7 +3,7 @@
 ![](https://xiaoqingxin.site/images/default_img.jpg)
 
 <p align="center">
- <a href="./api_EN.md">Documentation</a> | <a href="./docs_CN.md">中文文档</a>
+ <a href="./docs_EN.md">Documentation</a> | <a href="./docs_CN.md">中文文档</a>
 </p>
 
 <p align="center">
@@ -88,58 +88,26 @@ return [
 6. more... (mac command the same with ctrl)
 
 
-## 一些编辑器的基础配置
+## 前端对编辑器的基础配置
 ```javascript
-var editor = new Smartmd({
-        element: document.getElementById("editor"),
-        // minheight default 30vh
-        minHeight: "80vh",
-        renderingConfig: {
-            singleLineBreaks: false,
-            // highlight (need highlight.js)
-            codeSyntaxHighlighting: true,
-        },
-        autosave: {
-            enabled: true,
-            uniqueId: "write",
-            delay: 1000,
-        },
-        autoCloseTags: true,
-        matchTags: {bothTags: true},
-        image:{
-            // your UploadController route
-            uploadPath:'./upload',
-            type:['jpeg','png','bmp','gif','jpg'],
-            // fileSize (kb)
-            maxSize:4096,
-        },
-        // editor alert notice icon and color
-        alertThemes:[
-            {
-                name: 'success',
-                icon: 'fa fa-check-circle',
-            	color: '#38c172',
-            	defaultText: 'success'
-            },
-            {
-            	name: 'error',
-            	icon: 'fa fa-close-circle',
-            	color: '#e3342f',
-            	defaultText: 'Some things error'
-            }
-            //..add your themes and use editor.alert("themeName","text") to used;
-        ]
-        //...more see the docs
-});
-
-// diy editor drop function
-var cm = smartmd.codemirror;
-  cm.display.lineDiv.ondrop = function(ev){
-       if(ev.target.className.indexOf("CodeMirror-line") > -1){
-           // your drop down function
-       }
-       ev.preventDefault();
-   }
+  new Smartmd({
+    el: "#editor",
+    height: "80vh",
+    autoSave: {
+      uuid: 1,
+      delay: 5000
+    },
+    isFullScreen: true,
+    isPreviewActive: true,
+    uploads: {
+      url: './upload',
+      type: ['jpeg', 'png', 'bmp', 'gif', 'jpg'],
+      maxSize: 4096,
+      typeError: 'Image support format {type}.',
+      sizeError: 'Image size is more than {maxSize} kb.',
+      serverError: 'Upload failed in {msg}'
+    }
+  });
 ```
 
 ## 解析 markdown 
@@ -160,7 +128,9 @@ smartmd 提供了三种解析 markdown 的方式，您可以按照自己的需�
 #### 需要编辑器:
 ```html
 <script>
-    var smartmd = new Smartmd();
+    var smartmd = new Smartmd({
+        el: "#editor"
+    });
     smartmd.markdown("# hello world");
 </script>
 ```
@@ -183,10 +153,10 @@ return view('Smartmd::php-show',['content'=>$html]);
 
 ## 如何拓展
 #### 1. 编辑器
-参考 CodeMirror 的 [开发手册](https://github.com/codemirror/CodeMirror) 
-#### 2. markdown 文本渲染  
+ Smartmd 的前端项目 [点击链接](https://github.com/noisywinds/smartmd) 
+#### 2. 可视化的 markdown 文本渲染  
 参考 markdown-it 的插件开发 [链接](https://github.com/markdown-it/markdown-it)  
-如需更改解析规则，后端可修改 Markdown.php, 前端需要修改 smartmd/mode/markdown.js
+如需更改后端的解析规则，后端可修改 Markdown.php, 前端需要修改 codemirror 的 token
 
 ## 问题反馈 
 欢迎你在 issue 反馈你遇到的问题和你想兼容或者想拓展的需求，希望能给到你一些帮助。
